@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRUA Interactive Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        canvas {
+            max-width: 600px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <label for="initialPosition">Posición Inicial:</label>
+        <input type="number" id="initialPosition" value="0">
+        
+        <label for="initialVelocity">Velocidad Inicial:</label>
+        <input type="number" id="initialVelocity" value="0">
+        
+        <label for="acceleration">Aceleración:</label>
+        <input type="number" id="acceleration" value="1">
+
+        <button onclick="generarGrafico()">Generar Gráfico</button>
+    </div>
+
+    <canvas id="chartCanvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>
