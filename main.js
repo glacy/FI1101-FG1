@@ -17,18 +17,24 @@ function generarGrafico() {
 	
 	// Configurar la anotación con la ecuación
 const annotation3 = {
-  type: 'label',
-  // borderColor: (ctx) => ctx.chart.data.datasets[0].backgroundColor,
-  borderRadius: 6,
-  borderWidth: 1,
-  content: ['October', 'annotated'],
-  position: {
-    x: 'center',
-    y: 'end'
-  },
-  xValue: '10',
-  yValue: (ctx) => yValue(ctx, '10')
-};
+          type: 'label',
+          xValue: 2.5,
+          yValue: 60,
+          backgroundColor: 'rgba(245,245,245)',
+          content: ['This is my text', 'This is my text, second line'],
+          font: {
+            size: 18
+          }
+        };
+
+const box1 = {
+          type: 'box',
+          xMin: 1,
+          xMax: 5,
+          yMin: 50,
+          yMax: 70,
+          backgroundColor: 'rgba(255, 99, 132, 0.25)'
+        };
 
     const opciones = {
         responsive: true,
@@ -67,7 +73,7 @@ const annotation3 = {
 		plugins: {
         annotation: {
             annotations: {
-                annotation3
+                annotation3,box1
             }
         }
     }
