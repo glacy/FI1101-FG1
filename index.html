@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Gráfica MRUA</title>
-	<!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 	<!-- <script> -->
 	<!-- MathJax = { -->
@@ -102,11 +102,12 @@ y luego de click sobre <code>Generar gráfico</code>.
         <div class="col">
         <button onclick="generarGrafico()" class="btn" style="border-style: solid solid solid solid; border-image: linear-gradient(45deg,#ffccbc,#ff6e40,#d4fbff,#6cc9f8,#0089ef,#3a2c60) 1; font-size: 14pt;">Generar gráfico</button>
         </div>
-		<div class="chart-container" style="position: relative; width:100vw">
-		<div id="ecuacionMovimiento"></div>
-		<div id="legend-container"> </div>
-		<canvas id="chartCanvas" style="display: block; box-sizing: border-box; height: 240px; width: 480px;""></canvas>
+		<div id="chart-container">
+		<div id="legend-container"></div>
+		<!-- <div id="ecuacionMovimiento"></div> -->
+		<canvas id="chartCanvas" style="display: block; box-sizing: border-box; height: 240px;"></canvas>
         </div>
+		
     </div>
 </div>
 
