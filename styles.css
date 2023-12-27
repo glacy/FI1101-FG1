@@ -3,17 +3,36 @@
  */
 
 :root {
-  --bs-body-bg: var(--bs-gray-100);
-}
+	--bs-body-bg: var(--bs-gray-100);
+	}
 
 canvas {
-            max-width: 100%;
-            margin: 40px;
-        }
-		container {
-			padding: 20px;
-		}
-		.site-footer {
-  background: #6cc9f8;
-  padding: 20px;
-}
+	max-width: 100%;
+	margin: 20px;
+	/* border: 1px solid #000; */
+	}
+container {
+	padding: 40px;
+	}
+
+.site-footer {
+	background: #6cc9f8;
+	padding: 20px;
+	}
+
+/* #chart-container { */
+	/* position: relative; */
+	/* width:100vw; */
+	/* } */
+		
+/* #ecuacionMovimiento { */
+	/* /* display: inline; */ */
+	/* padding: 10px; */
+	/* position: absolute; */
+	/* /* float: right; */ */
+	/* top: 10%; */
+	/* left: 50%; */
+	/* /* width: 300px; */ */
+	/* /* height: 100px; */ */
+	/* background-color: rgba(255, 0, 0, 0.1); /* Ejemplo de color semitransparente */ */
+	/* } */
