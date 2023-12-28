@@ -95,14 +95,29 @@ plugins: {
 	},
 	legend: {
 		display: false,
-		}
+		},
+	tooltip: {
+		callbacks: {
+                    label: function(context) {
+                        let label = context.dataset.label || '';
+
+                        if (label) {
+                            label += ': ';
+                        }
+                        if (context.parsed.y !== null) {
+                            label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
+                        }
+                        return label;
+                    }
+				}
+},
 }
 }
 
 
 const ctx = document.getElementById('chartCanvas').getContext('2d');
 chart = new Chart(ctx, {
-type: 'line',
+type: 'scatter',
 data: data,
 options: opciones,
 plugins: [htmlLegendPlugin],
@@ -110,7 +125,7 @@ plugins: [htmlLegendPlugin],
 });
 
 // Calcula la ecuación del movimiento en LaTeX
-var ecuacionLatex = `\\(x(t) = (${initialPosition} \\,\\mbox{m})+(${initialVelocity} \\,\\mbox{m/s}) \\cdot t + \\frac{1}{2} \\cdot (${acceleration}\\,\\mbox{m/s}^2) \\cdot t^2 \\)`;
+// var ecuacionLatex = `\\(x(t) = (${initialPosition} \\,\\mbox{m})+(${initialVelocity} \\,\\mbox{m/s}) \\cdot t + \\frac{1}{2} \\cdot (${acceleration}\\,\\mbox{m/s}^2) \\cdot t^2 \\)`;
 
 // Muestra la ecuación en un div
 // var ecuacionDiv = document.getElementById('ecuacionMovimiento');
@@ -213,3 +228,8 @@ const htmlLegendPlugin = {
     });
   }
 };
+
+
+// console.log(${initialPosition});
+
+
