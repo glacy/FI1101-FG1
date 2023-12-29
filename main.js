@@ -15,7 +15,7 @@ const positionArray = generarArrayPosicion(initialPosition, initialVelocity, acc
 if (chart) {
 chart.destroy(); // Destruir el gráfico anterior si existe
 }
-	
+
 // Configurar la anotación con la ecuación
 
 const annotation3 = {
@@ -25,7 +25,7 @@ const annotation3 = {
   backgroundColor: 'rgba(245,245,245)',
   content: ['texto', 'This is my text, second line'],
   font: {
-size: 20
+		size: 20
   }
 };
 
@@ -44,7 +44,8 @@ datasets: [{
 label: `\\(x(t) = (${initialPosition} \\,\\mbox{m})+(${initialVelocity} \\,\\mbox{m/s}) \\cdot t + \\frac{1}{2} \\cdot (${acceleration}\\,\\mbox{m/s}^2) \\cdot t^2 \\)`,
 borderColor: 'rgb(255, 204, 188)',
 data: positionArray,
-fill: false
+fill: false,
+pointStyle: 'rect',
 }]
 };
 
@@ -100,7 +101,6 @@ plugins: {
 		callbacks: {
                     label: function(context) {
                         let label = context.dataset.label || '';
-
                         if (label) {
                             label = 'x= ';
                         }
@@ -110,14 +110,14 @@ plugins: {
                         return label;
                     }
 				}
-},
+			},
 }
-}
+};
 
 
 const ctx = document.getElementById('chartCanvas').getContext('2d');
 chart = new Chart(ctx, {
-type: 'scatter',
+type: 'line',
 data: data,
 options: opciones,
 plugins: [htmlLegendPlugin],
