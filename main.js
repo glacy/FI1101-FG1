@@ -102,10 +102,10 @@ plugins: {
                         let label = context.dataset.label || '';
 
                         if (label) {
-                            label += ': ';
+                            label = 'x= ';
                         }
                         if (context.parsed.y !== null) {
-                            label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
+                            label += new Intl.NumberFormat('en-US').format(context.parsed.y) + ' m';
                         }
                         return label;
                     }
@@ -187,6 +187,7 @@ const htmlLegendPlugin = {
       li.style.display = 'flex';
       li.style.flexDirection = 'row';
       li.style.marginLeft = '10px';
+	  li.style.pointer = 'grab';
 
       // li.onclick = () => {
         // const {type} = chart.config;
