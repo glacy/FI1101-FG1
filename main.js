@@ -9,6 +9,7 @@ const initialPosition = parseFloat(document.getElementById('initialPosition').va
 const initialVelocity = parseFloat(document.getElementById('initialVelocity').value);
 const acceleration = parseFloat(document.getElementById('acceleration').value);
 
+// const tmax = parseFloat(valorMaximoTiempoInput.value) || 10;
 const timeArray = generarArrayTiempo();
 const positionArray = generarArrayPosicion(initialPosition, initialVelocity, acceleration, timeArray);
 
@@ -134,8 +135,9 @@ plugins: [htmlLegendPlugin],
 }
 
 function generarArrayTiempo() {
+const tmax = parseFloat(document.getElementById('tmax').value);
 const timeArray = [];
-for (let t = 0; t <= 20; t += 0.1) {
+for (let t = 0; t <= tmax; t += 0.1) {
 timeArray.push(t.toFixed(2));
 }
 return timeArray;
