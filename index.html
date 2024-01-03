@@ -18,7 +18,7 @@
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #6cc9f8;">
       <div class="container">
         <a class="navbar-brand" href="#">
-		      <img src="https://tecdigital.tec.ac.cr/repositorio/tecdigital/TD/img/tec-logo.png" alt="tecDigital-logo" width="100">
+		      <img src="https://tecdigital.tec.ac.cr/repositorio/tecdigital/TD/img/tec-logo.png" alt="tecDigital-logo" width="150">
 		</a>
 <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> -->
 <!-- <span class="navbar-toggler-icon"></span> -->
@@ -51,30 +51,17 @@
 <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
 <!-- </form> -->
 
-      </div>
-    </nav>
+</div>
+</nav>
 
-<div class="container" style="padding:20px">
-<!-- <div class="card-body"> -->
-<div class="main row container">
+<div class="container">
+<div class="row">
 <div class="col-md-2 col-sm-2 col-lg-2" style="text-align: center; padding: 20px;"><img src="https://tecdigital.tec.ac.cr/repositorio/tecdigital/ESC_FISICA/img/consigna_orientacion.png" width="75"></div>
 <div class="col-md-10 col-sm-10 col-lg-10">
-<div class="container">
-Para visualizar la gráfica de posición vs tiempo para un movimiento rectilineo uniformemente acelerado (MRUA), ingrese los siguientes parámetros:
-<ul>
-<li> <code>Posición inicial</code>, 
-<li> <code>velocidad inicial</code>,
-<li> <code>aceleración</code>,
-</ul>
-y luego de click sobre <code>Generar gráfico</code>. Puede modificar el intervalo de graficación, ajustando el valor de <code>tiempo máximo</code>.
-</div>
-</div>
-<!-- </div> -->
-</div>
-</div>
+<p>
+Para visualizar la gráfica de posición vs tiempo para un movimiento rectilineo uniformemente acelerado (MRUA), ingrese los valores de:
+</p>
 
-<div class="container">
-<div class="main row container">
 <div class="input-group mb-3">
 <span class="input-group-text" >Posición inicial:</span>
 <input id="initialPosition" type="number" value="1" class="form-control" placeholder="Ingrese aquí la posición inicial" aria-label="initialPosition" aria-describedby="initialPosition">
@@ -93,29 +80,37 @@ y luego de click sobre <code>Generar gráfico</code>. Puede modificar el interva
 <div class="input-group mb-3">
 <span class="input-group-text" >Tiempo máximo:</span>
 <input id="tmax" type="number" value="20" class="form-control" placeholder="Ingrese el valor máximo para la serie de tiempo" aria-label="tmax" aria-describedby="tmax">
-<span class="input-group-text">s</span>
+<span class="input-group-text">s</span>.
 </div>
-</div>
-<!-- </div> -->
 
-<div class="col">
-<button onclick="generarGrafico()" class="btn" style="border-style: solid solid solid solid; border-image: linear-gradient(45deg,#ffccbc,#ff6e40,#d4fbff,#6cc9f8,#0089ef,#3a2c60) 1; font-size: 14pt;">Generar gráfico</button>
-<!-- </div> -->
+<p>
+y luego de click sobre <button onclick="generarGrafico()" class="btn" style="border-style: solid solid solid solid; border-image: linear-gradient(45deg,#ffccbc,#ff6e40,#d4fbff,#6cc9f8,#0089ef,#3a2c60) 1; font-size: 14pt;">Generar gráfico</button>
+</p>
+</div>
+</div>
+</div>
+
+<div class="container">
+<div class="grafico">
 <div id="chart-container">
-<div id="legend-container"></div>
-<!-- <div id="ecuacionMovimiento"></div> -->
+<div id="legend-container">
+</div>
 <canvas id="chartCanvas" style="display: block; box-sizing: border-box; height: 240px;"></canvas>
 </div>
 </div>
-
+</div>
 
 <footer class="site-footer">
 <div class="container">
 <p>Créditos: Gerardo Lacy Mora.</p>
-<p>Última actualización: 31.12.2023.</p>
+<p>Última actualización: 02.01.2024.</p>
 </div>
 </footer>
-
+<!-- <script> -->
+    <!-- document.addEventListener('DOMContentLoaded', function() { -->
+        <!-- generarGrafico(); // Llama a la función cuando el DOM esté completamente cargado -->
+    <!-- }); -->
+<!-- </script> -->
 <script src="main.js"></script>
 <!-- <script src="htmlLegendPlugin.js"></script> -->
 </body>
