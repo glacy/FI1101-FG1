@@ -9,7 +9,6 @@ const initialPosition = parseFloat(document.getElementById('initialPosition').va
 const initialVelocity = parseFloat(document.getElementById('initialVelocity').value);
 const acceleration = parseFloat(document.getElementById('acceleration').value);
 
-// const tmax = parseFloat(valorMaximoTiempoInput.value) || 10;
 const timeArray = generarArrayTiempo();
 const positionArray = generarArrayPosicion(initialPosition, initialVelocity, acceleration, timeArray);
 
@@ -17,32 +16,10 @@ if (chart) {
 chart.destroy(); // Destruir el gráfico anterior si existe
 }
 
-// Configurar la anotación con la ecuación
-
-const annotation3 = {
-  type: 'label',
-  xValue: 5,
-  yValue: 60,
-  backgroundColor: 'rgba(245,245,245)',
-  content: ['texto', 'This is my text, second line'],
-  font: {
-		size: 20
-  }
-};
-
-const box1 = {
-  type: 'box',
-  xMin: 1,
-  xMax: 5,
-  yMin: 50,
-  yMax: 70,
-  backgroundColor: 'rgba(255, 99, 132, 0.25)'
-};
-
 const data = {
 labels: timeArray,
 datasets: [{
-label: `\\(x(t) = (${initialPosition} \\,\\mbox{m})+(${initialVelocity} \\,\\mbox{m/s}) \\cdot t + \\frac{1}{2} \\cdot (${acceleration}\\,\\mbox{m/s}^2) \\cdot t^2 \\)`,
+label: `\\(x(t) = (${initialPosition} \\,\\mbox{m})+(${initialVelocity} \\,\\mbox{m/s}) \\cdot t +\\displaystyle \\frac{1}{2} \\cdot (${acceleration}\\,\\mbox{m/s}^2) \\cdot t^2 \\)`,
 borderColor: 'rgb(255, 204, 188)',
 data: positionArray,
 fill: false,
@@ -115,8 +92,8 @@ plugins: {
 }
 };
 
-
 const ctx = document.getElementById('chartCanvas').getContext('2d');
+
 chart = new Chart(ctx, {
 type: 'line',
 data: data,
@@ -124,14 +101,6 @@ options: opciones,
 plugins: [htmlLegendPlugin],
 // maintainAspectRatio : false,
 });
-
-// Calcula la ecuación del movimiento en LaTeX
-// var ecuacionLatex = `\\(x(t) = (${initialPosition} \\,\\mbox{m})+(${initialVelocity} \\,\\mbox{m/s}) \\cdot t + \\frac{1}{2} \\cdot (${acceleration}\\,\\mbox{m/s}^2) \\cdot t^2 \\)`;
-
-// Muestra la ecuación en un div
-// var ecuacionDiv = document.getElementById('ecuacionMovimiento');
-// ecuacionDiv.innerHTML = `<p>${ecuacionLatex}</p>`;
-
 }
 
 function generarArrayTiempo() {
@@ -231,8 +200,3 @@ const htmlLegendPlugin = {
     });
   }
 };
-
-
-// console.log(${initialPosition});
-
-
