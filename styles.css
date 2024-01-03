@@ -13,14 +13,7 @@ canvas {
 	}
 .container {
 	padding-top: 20px;
-	/* border: 1px solid #000; */
-	/* padding-top: 30px; */
 	}
-
-/* .grafico { */
-	/* display: flex; */
-	/* justify-content: center; */
-	/* } */
 
 .site-footer {
 	background: #6cc9f8;
@@ -30,9 +23,5 @@ canvas {
 #chart-container {
 	padding-top: 30px;
 	width:80vw;
-	}
-	
-	ul {
-		margin:auto;
 	}
 
