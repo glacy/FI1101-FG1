@@ -1,6 +1,3 @@
-//
-// Place any custom JS here
-//
 let chart;
 
 function generarGrafico() {
