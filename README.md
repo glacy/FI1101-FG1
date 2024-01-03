@@ -1,4 +1,4 @@
-# Prototipos de recurso educativos abiertos
+# Prototipos de recursos educativos abiertos
 ## MRUA
 ### posición vs tiempo
 [enlace](https://glacy.github.io/FI1101-FG1/)
