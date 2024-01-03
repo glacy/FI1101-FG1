@@ -1,3 +1,6 @@
+//
+// Place any custom JS here
+//
 let chart;
 
 function generarGrafico() {
@@ -102,11 +105,20 @@ plugins: [htmlLegendPlugin],
 
 function generarArrayTiempo() {
 const tmax = parseFloat(document.getElementById('tmax').value);
+
+
+if (tmax > 0) {
 const timeArray = [];
 for (let t = 0; t <= tmax; t += 0.1) {
 timeArray.push(t.toFixed(2));
 }
 return timeArray;
+} else {
+        // Muestra un mensaje de error o realiza otra acción
+		alert('El tiempo máximo debe ser mayor que cero.');
+        console.error('El tiempo máximo debe ser mayor que cero.');
+        return null; // Otra opción: devuelve un valor que indica un error
+    } 
 }
 
 function generarArrayPosicion(initialPosition, initialVelocity, acceleration, timeArray) {
