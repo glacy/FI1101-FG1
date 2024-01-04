@@ -39,7 +39,7 @@ const opciones = {
 		color: '#3a2c60',
 		font: {
 		family: 'monospace',
-		size: 20,
+		size: 12,
 		weight: 'normal',
 		lineHeight: 1.2,
 		},
@@ -54,7 +54,7 @@ const opciones = {
 		color: '#3a2c60',
 		font: {
 		family: 'monospace',
-		size: 20,
+		size: 12,
 		style: 'normal',
 		lineHeight: 1.2
 		},
@@ -63,11 +63,6 @@ const opciones = {
 	}
 	},
 plugins: {
-// annotation: {
-// annotations: {
-// annotation3,box1
-// }
-// },
 	htmlLegend: {
 // ID of the container to put the legend in
 		containerID: 'legend-container',
