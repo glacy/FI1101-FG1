@@ -1,16 +1,13 @@
-//
-// Place any custom JS here
-//
 let chart;
 
 function generarGrafico() {
 
 const initialPosition = parseFloat(document.getElementById('initialPosition').value);
 const initialVelocity = parseFloat(document.getElementById('initialVelocity').value);
-const acceleration = parseFloat(document.getElementById('acceleration').value);
+
 
 const timeArray = generarArrayTiempo();
-const positionArray = generarArrayPosicion(initialPosition, initialVelocity, acceleration, timeArray);
+const positionArray = generarArrayPosicion(initialPosition, initialVelocity, timeArray);
 
 if (chart) {
 chart.destroy(); // Destruir el gráfico anterior si existe
@@ -19,7 +16,7 @@ chart.destroy(); // Destruir el gráfico anterior si existe
 const data = {
 labels: timeArray,
 datasets: [{
-label: `\\(x(t) = (${initialPosition} \\,\\mbox{m})+(${initialVelocity} \\,\\mbox{m/s}) \\cdot t +\\displaystyle \\frac{1}{2} \\cdot (${acceleration}\\,\\mbox{m/s}^2) \\cdot t^2 \\)`,
+label: `\\(x(t) = (${initialPosition} \\,\\mbox{m})+(${initialVelocity} \\,\\mbox{m/s}) \\cdot t \\)`,
 borderColor: 'rgb(255, 204, 188)',
 data: positionArray,
 fill: false,
@@ -63,6 +60,11 @@ const opciones = {
 	}
 	},
 plugins: {
+// annotation: {
+// annotations: {
+// annotation3,box1
+// }
+// },
 	htmlLegend: {
 // ID of the container to put the legend in
 		containerID: 'legend-container',
@@ -101,7 +103,6 @@ plugins: [htmlLegendPlugin],
 function generarArrayTiempo() {
 const tmax = parseFloat(document.getElementById('tmax').value);
 
-
 if (tmax > 0) {
 const timeArray = [];
 for (let t = 0; t <= tmax; t += 0.1) {
@@ -116,10 +117,10 @@ return timeArray;
     } 
 }
 
-function generarArrayPosicion(initialPosition, initialVelocity, acceleration, timeArray) {
+function generarArrayPosicion(initialPosition, initialVelocity, timeArray) {
 const positionArray = [];
 timeArray.forEach(t => {
-const position = initialPosition + initialVelocity * t + 0.5 * acceleration * Math.pow(t, 2);
+const position = initialPosition + initialVelocity * t;
 positionArray.push(position.toFixed(2));
 });
 return positionArray;
