@@ -16,7 +16,7 @@ canvas {
 	}
 
 .site-footer {
-	background: #6cc9f8;
+	background: #7A8AA7ff;
 	padding: 20px;
 	font-size: 10pt;
 	}
@@ -28,8 +28,8 @@ canvas {
 
 button {
 	border-style: solid solid solid solid; 
-	border-image: linear-gradient(45deg,#ffccbc,#ff6e40,#d4fbff,#6cc9f8,#0089ef,#3a2c60) 1; 
-	font-size: 12pt;"
+	border-image: linear-gradient(45deg,#002856ff,#7A8AA7ff,#A0AF84ff,#FF6666ff, #AA4242ff) 1; 
+	font-size: 12pt;
 	}
 
 section {
