@@ -1,209 +1,90 @@
-let chart;
+<!-- #ffccbc,#ff6e40,#d4fbff,#6cc9f8,#0089ef,#3a2c60) -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gráfica MRU</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="\node_modules\chartjs-plugin-annotation\dist\chartjs-plugin-annotation.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-function generarGrafico() {
+</head>
 
-const initialPosition = parseFloat(document.getElementById('initialPosition').value);
-const initialVelocity = parseFloat(document.getElementById('initialVelocity').value);
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #6cc9f8;">
+<div class="container">
+<a class="navbar-brand" href="#">
+<img src="https://tecdigital.tec.ac.cr/repositorio/tecdigital/TD/img/tec-logo.png" alt="tecDigital-logo" width="150">
+</a>
+
+</div>
+</nav>
+
+<div class="container">
+<div class="row">
+<div class="col-md-2 col-sm-2 col-lg-2" style="text-align: center; padding: 20px;"><img src="https://tecdigital.tec.ac.cr/repositorio/tecdigital/ESC_FISICA/img/consigna_orientacion.png" width="75"alt="instrucciones"></div>
+<div class="col-md-10 col-sm-10 col-lg-10">
+<p>
+Para visualizar la gráfica de posición vs tiempo en un movimiento rectilineo uniformeme (MRU), ingrese los valores de
+</p>
+
+<div class="input-group mb-3">
+<span class="input-group-text" >posición inicial:</span>
+<input id="initialPosition" type="number" value="1" class="form-control" placeholder="Ingrese aquí la posición inicial" aria-label="initialPosition" aria-describedby="initialPosition">
+<span class="input-group-text">m</span>
+</div>
+<div class="input-group mb-3">
+<span class="input-group-text" >velocidad constante:</span>
+<input id="initialVelocity" type="number" value="1" class="form-control" placeholder="Ingrese aquí la velocidad constante" aria-label="initialVelocity" aria-describedby="initialVelocity">
+<span class="input-group-text">m/s</span>
+</div>
+
+<div class="input-group mb-3">
+<span class="input-group-text" >tiempo máximo:</span>
+<input id="tmax" type="number" value="20" class="form-control" placeholder="Ingrese el valor máximo para la serie de tiempo" aria-label="tmax" aria-describedby="tmax">
+<span class="input-group-text">s</span>
+</div>
+
+<p>
+y luego de click sobre <button onclick="generarGrafico()" onkeydown="generarGrafico()" class="btn" tabindex="0"; style="border-style: solid solid solid solid; border-image: linear-gradient(45deg,#ffccbc,#ff6e40,#d4fbff,#6cc9f8,#0089ef,#3a2c60) 1; font-size: 12pt;"> <span style="font-family:Lucida Console;">generar gráfico</span></button>
+</p>
+</div>
+</div>
+</div>
+
+<div class="container">
+<div id="chart-container">
+<section>
+<div id="legend-container">
+</div>
+</section>
+<canvas id="chartCanvas" style="display: block; box-sizing: border-box;"></canvas>
+</div>
+</div>
 
 
-const timeArray = generarArrayTiempo();
-const positionArray = generarArrayPosicion(initialPosition, initialVelocity, timeArray);
 
-if (chart) {
-chart.destroy(); // Destruir el gráfico anterior si existe
-}
+<footer class="site-footer">
+<div class="container text-center">
+<div class="row align-items-center">
+<div class="col col-sm-12 col-lg-6 col-md-6">
+<p><a title="escribir a glacy@itcr.ac.cr" href="mailto: glacy@itcr.ac.cr" target="_blank" rel="noopener"><span style="color: #D4FBFF ;"><span class="material-icons">mail</span>glacy@itcr.ac.cr</span></a></p>
+</div>
+<div class="col col-sm-12 col-lg-6 col-md-6">
+<p><a title="ir al repositorio" href="https://github.com/glacy/FI1101-FG1/" target="_blank" rel="noopener"><span style="color: #D4FBFF ;"><span class="material-icons">code</span>Código fuente</span></a></p>
+</div>
+<!-- <p><span style="color: #D4FBFF ;"><span class="material-icons">update</span>Última actualización: 03.01.2024.</span></a></p> -->
+</div>
+</div>
+</footer>
 
-const data = {
-labels: timeArray,
-datasets: [{
-label: `\\(x(t) = (${initialPosition} \\,\\mbox{m})+(${initialVelocity} \\,\\mbox{m/s}) \\cdot t \\)`,
-borderColor: 'rgb(255, 204, 188)',
-data: positionArray,
-fill: false,
-pointStyle: 'rect',
-}]
-};
-
-const opciones = {
-	responsive: true,
-	// aspectRatio: 1;
-	scales: {
-	  x: {
-		display: true,
-		title: {
-		display: true,
-		text: 'Tiempo (s)',
-		color: '#3a2c60',
-		font: {
-		family: 'monospace',
-		size: 12,
-		weight: 'normal',
-		lineHeight: 1.2,
-		},
-		padding: {top: 20, left: 0, right: 0, bottom: 0}
-		}
-		},
-	  y: {
-		display: true,
-		title: {
-		display: true,
-		text: 'Posición (m)',
-		color: '#3a2c60',
-		font: {
-		family: 'monospace',
-		size: 12,
-		style: 'normal',
-		lineHeight: 1.2
-		},
-		padding: {top: 30, left: 0, right: 0, bottom: 0}
-		}
-	}
-	},
-plugins: {
-// annotation: {
-// annotations: {
-// annotation3,box1
-// }
-// },
-	htmlLegend: {
-// ID of the container to put the legend in
-		containerID: 'legend-container',
-	},
-	legend: {
-		display: false,
-		},
-	tooltip: {
-		callbacks: {
-                    label: function(context) {
-                        let label = context.dataset.label || '';
-                        if (label) {
-                            label = 'x= ';
-                        }
-                        if (context.parsed.y !== null) {
-                            label += new Intl.NumberFormat('en-US').format(context.parsed.y) + ' m';
-                        }
-                        return label;
-                    }
-				}
-			},
-}
-};
-
-const ctx = document.getElementById('chartCanvas').getContext('2d');
-
-chart = new Chart(ctx, {
-type: 'line',
-data: data,
-options: opciones,
-plugins: [htmlLegendPlugin],
-// maintainAspectRatio : false,
-});
-}
-
-function generarArrayTiempo() {
-const tmax = parseFloat(document.getElementById('tmax').value);
-
-if (tmax > 0) {
-const timeArray = [];
-for (let t = 0; t <= tmax; t += 0.1) {
-timeArray.push(t.toFixed(2));
-}
-return timeArray;
-} else {
-        // Muestra un mensaje de error o realiza otra acción
-		alert('El tiempo máximo debe ser mayor que cero.');
-        console.error('El tiempo máximo debe ser mayor que cero.');
-        return null; // Otra opción: devuelve un valor que indica un error
-    } 
-}
-
-function generarArrayPosicion(initialPosition, initialVelocity, timeArray) {
-const positionArray = [];
-timeArray.forEach(t => {
-const position = initialPosition + initialVelocity * t;
-positionArray.push(position.toFixed(2));
-});
-return positionArray;
-}
-
-const getOrCreateLegendList = (chart, id) => {
-  const legendContainer = document.getElementById(id);
-  let listContainer = legendContainer.querySelector('ul');
-
-  if (!listContainer) {
-    listContainer = document.createElement('ul');
-    listContainer.style.display = 'flex';
-    listContainer.style.flexDirection = 'row';
-    listContainer.style.margin = 0;
-    listContainer.style.padding = 0;
-
-    legendContainer.appendChild(listContainer);
-  }
-
-  return listContainer;
-};
-
-const htmlLegendPlugin = {
-  id: 'htmlLegend',
-  afterUpdate(chart, args, options) {
-    const ul = getOrCreateLegendList(chart, options.containerID);
-
-    // Remove old legend items
-    while (ul.firstChild) {
-      ul.firstChild.remove();
-    }
-
-    // Reuse the built-in legendItems generator
-    const items = chart.options.plugins.legend.labels.generateLabels(chart);
-
-    items.forEach(item => {
-      const li = document.createElement('li');
-      li.style.alignItems = 'center';
-      li.style.cursor = 'pointer';
-      li.style.display = 'flex';
-      li.style.flexDirection = 'row';
-      li.style.marginLeft = '10px';
-	  li.style.pointer = 'grab';
-
-      // li.onclick = () => {
-        // const {type} = chart.config;
-        // if (type === 'pie' || type === 'doughnut') {
-          // // Pie and doughnut charts only have a single dataset and visibility is per item
-          // chart.toggleDataVisibility(item.index);
-        // } else {
-          // chart.setDatasetVisibility(item.datasetIndex, !chart.isDatasetVisible(item.datasetIndex));
-        // }
-        // chart.update();
-      // };
-
-      // Color box
-      const boxSpan = document.createElement('span');
-      boxSpan.style.background = item.fillStyle;
-      boxSpan.style.borderColor = item.strokeStyle;
-      boxSpan.style.borderWidth = item.lineWidth + 'px';
-      boxSpan.style.display = 'inline-block';
-      boxSpan.style.flexShrink = 0;
-      boxSpan.style.height = '20px';
-      boxSpan.style.marginRight = '10px';
-      boxSpan.style.width = '20px';
-
-      // Text
-      const textContainer = document.createElement('p');
-      textContainer.style.color = item.fontColor;
-      textContainer.style.margin = 0;
-      textContainer.style.padding = 0;
-      textContainer.style.textDecoration = item.hidden ? 'line-through' : '';
-
-      const text = document.createTextNode(item.text);
-      textContainer.appendChild(text);
-
-      li.appendChild(boxSpan);
-      li.appendChild(textContainer);
-      ul.appendChild(li);
-	  
-	  MathJax.typeset();
-    });
-  }
-};
-
+<script src="main.js"></script>
+</body>
+</html>
 
